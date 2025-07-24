@@ -5,9 +5,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { FaBars } from "react-icons/fa6";
 
-const ResNav = () => {
-
-    const [Value , SetValue] = useState(true)
+export const Resnav = () => {
+  const [Value , SetValue] = useState(true)
 
   return (
     <>
@@ -57,5 +56,3 @@ const ResNav = () => {
     </>
   )
 }
-
-export default ResNav

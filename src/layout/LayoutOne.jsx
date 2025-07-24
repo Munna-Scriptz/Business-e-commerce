@@ -1,13 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar'
-import ResNav from '../components/Resnav'
+import { Resnav } from '../components/Resnav'
 
 const LayoutOne = () => {
   return (
     <>
         <Navbar/>
-        <ResNav/>
+        <Resnav/>
         <Outlet/>
     </>
   )
