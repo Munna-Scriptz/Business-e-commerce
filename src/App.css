@@ -1,5 +1,21 @@
 /* ----------Common css----------- */
 
 /* ----------Navbar Start----------- */
+#NavRow ul li a{
+  position: relative;
+}
+#NavRow ul li a::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #72BF44;
+  width: 0%;
+  height: 2px;
+  transition: all ease-in-out 300ms;
+}
+#NavRow ul li a:hover::after{
+  width: 100%;
+}
 
 /* ----------Navbar End----------- */
