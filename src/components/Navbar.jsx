@@ -7,13 +7,13 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 const Navbar = () => {
   return (
     <>
-        <nav className='py-8 bg-primary'>
+        <nav className='py-8 bg-primary hidden lg:block'>
             <div className='container'>
                 <div id='NavRow' className='flex items-center justify-between'>
 
                     {/* -----------Logo-------- */}
                     <div className='w-[150px]'>
-                        <img src={Logo} alt="Logo" />
+                        <Link to={'/'}><img src={Logo} alt="Logo" /></Link>
                     </div>
                     {/* -----------NavLinks-------- */}
                     <ul className='text-white flex items-center gap-5 font-poppins'>
