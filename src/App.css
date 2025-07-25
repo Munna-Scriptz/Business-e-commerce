@@ -52,3 +52,18 @@
     display: block;
     margin: 0 auto;
 }
+.slick-prev, .slick-next {
+    width: 35px;
+    height: 35px;
+}
+
+@media (min-width: 320px) and (max-width: 576px) { 
+
+  .slick-next {
+	  right: 10px !important;
+  }
+  .slick-prev {
+	  left: 10px !important;
+	  z-index: 1;
+  }
+}

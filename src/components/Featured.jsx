@@ -2,6 +2,9 @@ import React from 'react'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
+
 // -------Images 
 import Cloths1 from '../assets/images/Clothes1.jpg'
 import Cloths2 from '../assets/images/Clothes2.jpg'
@@ -14,12 +17,16 @@ const Featured = () => {
     const settings = {
     dots: true,
     infinite: true,
+    arrows: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 3000,
+    nextArrow: <FaAngleRight fill='#000'/>,
+    prevArrow: <FaAngleLeft fill='#000'/>,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -27,7 +34,8 @@ const Featured = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
+          dots: true,
+          arrows: true,
         }
       },
       {
@@ -42,11 +50,13 @@ const Featured = () => {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          arrows: true,
         }
       }
     ]
   };
+  
   return (
     <>
         <section className='mt-25'>
