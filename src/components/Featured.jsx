@@ -7,11 +7,11 @@ import { FaAngleRight } from "react-icons/fa6";
 
 // -------Images 
 import Cloths1 from '../assets/images/Clothes1.jpg'
-import Cloths2 from '../assets/images/Clothes2.jpg'
-import Cloths3 from '../assets/images/Clothes3.jpg'
-import Cloths4 from '../assets/images/Clothes4.jpg'
-import Cloths5 from '../assets/images/Clothes5.jpg'
-import Cloths6 from '../assets/images/Clothes6.jpg'
+import Cloths2 from '../assets/images/clothes2.jpg'
+import Cloths3 from '../assets/images/clothes3.jpg'
+import Cloths4 from '../assets/images/clothes4.jpg'
+import Cloths5 from '../assets/images/clothes5.jpg'
+import Cloths6 from '../assets/images/clothes6.jpg'
 
 const Featured = () => {
     const settings = {
