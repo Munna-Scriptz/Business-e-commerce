@@ -48,7 +48,6 @@ const ResNavbar = () => {
                               <ul id='ResNav' className='flex flex-col gap-5 mt-25 text-white font-poppins'>
                                 <li><Link to={'/'}>Home</Link></li>
                                 <li><Link to={'/'}>Shop</Link></li>
-                                <li><Link to={'/'}>All products</Link></li>
                                 <li><Link to={'/'}>About</Link></li>
                                 <li><Link to={'/'}>Contact us</Link></li>
                               </ul>
