@@ -8,11 +8,11 @@ const Footer = () => {
     <>
     <footer className='mt-[112px] py-[34px] bg-second'>
         <div className="container">
-            <div id="Footer-Row" className='flex items-start justify-between'>
-                <div>
+            <div id="Footer-Row" className='flex lg:flex-row flex-col lg:items-start items-center lg:gap-0 gap-[40px] justify-between'>
+                <div className='flex flex-col lg:items-start items-center'>
                     <img className='w-[142px]' src={logo} alt="Logo" />
-                    <div className='mt-9'>
-                        <p className=' text-white'>🔥 Wear Ryans 🔥<br />🔥 Wear The class 🔥</p>
+                    <div className='mt-9 flex flex-col lg:items-start items-center'>
+                        <p className=' text-white lg:text-start text-center '>🔥 Wear Ryans 🔥<br />🔥 Wear The class 🔥</p>
                         <p className='text-white font-poppins flex items-center gap-2 mt-5'><IoLocationSharp /> Dhaka , Bangladesh</p>
                         <p className='text-white font-poppins flex items-center gap-2 mt-2'><IoCall /> Phone : 01xxxxxxxxx</p>
                         <p className='text-white font-poppins flex items-center gap-2 mt-2'><MdEmail /> Email : munnascriptz@gmail.com</p>
@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h2 className='text-white font-poppins text-2xl'>Pages</h2>
-                    <div className='mt-4 flex flex-col gap-3'>
+                    <div className='mt-4 flex flex-col lg:items-start items-center gap-3'>
                         <Link to={'/'} className='text-[#c9c9c9] font-poppins '>Home</Link>
                         <Link to={'/shop'} className='text-[#c9c9c9] font-poppins '>Shop</Link>
                         <Link to={'/'} className='text-[#c9c9c9] font-poppins '>About</Link>
@@ -28,8 +28,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <h2 className='text-white font-poppins text-2xl'>Support</h2>
-                    <div className='mt-4 flex flex-col gap-3'>
+                    <h2 className='text-white font-poppins lg:text-second text-center text-2xl'>Support</h2>
+                    <div className='mt-4 flex lg:items-start items-center flex-col gap-3'>
                         <Link to={'/about'} className='text-[#c9c9c9] font-poppins '>About us</Link>
                         <Link to={'/contact'} className='text-[#c9c9c9] font-poppins '>Contact</Link>
                         <Link to={'/'} className='text-[#c9c9c9] font-poppins '>Privacy & Policy</Link>
