@@ -21,7 +21,7 @@ function App() {
         </Route>
 
         <Route path='/admin' element={<AdminLayout/>}>
-          <Route path='/admin/upload-product' element={<UploadProduct />}></Route> 
+          <Route index element={<UploadProduct />}></Route> 
           <Route path='/admin/view-orders' element={<ViewOrders />}></Route> 
           <Route path='/admin/delete-update-product' element={<DeleteUpdateProduct />}></Route> 
         </Route>

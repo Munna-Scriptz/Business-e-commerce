@@ -6,7 +6,7 @@ const AdminLayout = () => {
   const location = useLocation();
 
   const links = [
-    { name: "Upload Product", to: "/admin/upload-product", icon: <FaUpload /> },
+    { name: "Upload Product", to: "/admin", icon: <FaUpload /> },
     { name: "View Orders", to: "/admin/view-orders", icon: <FaClipboardList /> },
     { name: "Delete/Update Product", to: "/admin/delete-update-product", icon: <FaTrash /> },
   ];

@@ -1,30 +1,70 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const UploadProduct = () => {
-  const [form, setForm] = useState({ name: "", details: "", price: "", image: "" });
+  const [form, setForm] = useState({ name: "", details: "", price: "", image: null });
 
   const handleChange = (e) => setForm({...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Product submitted:", form);
-    // You can send it to backend here
-    alert("Product uploaded!");
-    setForm({ name: "", details: "", price: "", image: "" });
-  };
-
+  console.log(form.image)
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Upload Product</h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Product Name" className="border p-2 rounded" value={form.name} onChange={handleChange}/>
-        <input type="text" name="details" placeholder="Product Details" className="border p-2 rounded" value={form.details} onChange={handleChange}/>
-        <input type="number" name="price" placeholder="Price" className="border p-2 rounded" value={form.price} onChange={handleChange}/>
-        <input type="text" name="image" placeholder="Image URL" className="border p-2 rounded" value={form.image} onChange={handleChange}/>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">Submit Product</button>
+    <div className="bg-white p-6 rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">Upload Product</h1>
+      <form className="flex flex-col gap-5">
+        
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">Product Name</label>
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Enter product name" 
+            className="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={form.name} 
+            onChange={handleChange} 
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">Product Details</label>
+          <textarea 
+            name="details" 
+            placeholder="Enter product details" 
+            className="border border-gray-300 p-3 rounded h-24 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={form.details} 
+            onChange={handleChange} 
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">Price</label>
+          <input 
+            type="number" 
+            name="price" 
+            placeholder="Enter price" 
+            className="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={form.price} 
+            onChange={handleChange} 
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">Product Image</label>
+          <input 
+            type="file" 
+            name="image" 
+            className="border border-gray-300 p-2 rounded cursor-pointer focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all font-medium"
+        >
+          Submit Product
+        </button>
       </form>
     </div>
   );
 };
 
 export default UploadProduct;
+
