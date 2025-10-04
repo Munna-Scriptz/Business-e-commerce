@@ -1,5 +1,7 @@
 /* ----------Common css----------- */
-
+body{
+  font-family: "Poppins", "sans-serif";
+}
 /* ----------Navbar Start----------- */
 #NavRow ul li a{
   position: relative;

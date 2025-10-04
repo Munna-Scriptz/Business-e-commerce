@@ -3,6 +3,7 @@ import './App.css'
 import LayoutOne from './layout/LayoutOne'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
+import Details from './pages/Details'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<LayoutOne/>}>
           <Route index element={<Home/>}></Route>
           <Route path='/shop' element={<Shop/>}></Route>
+          <Route path='/details' element={<Details/>}></Route>
         </Route>
     </Route>
 
