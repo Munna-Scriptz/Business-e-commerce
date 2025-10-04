@@ -1,5 +1,4 @@
 import React from 'react'
-import proImg from '../../src/assets/images/Clothes1.jpg'
 import { useLocation } from 'react-router'
 
 const Details = () => {

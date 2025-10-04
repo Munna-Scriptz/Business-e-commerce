@@ -25,7 +25,6 @@ const Navbar = () => {
                     {/* -----------Buttons-------- */}
                     <div id='NavIcon' className='flex items-center gap-5 text-2xl text-white'>
                         <BiSolidPhoneCall  className='cursor-pointer hover:text-brand duration-[300ms]'/>
-                        <FaShoppingCart className='cursor-pointer hover:text-brand duration-[300ms]'/>
                     </div>
                 </div>
             </div>

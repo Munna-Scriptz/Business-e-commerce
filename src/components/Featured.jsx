@@ -137,7 +137,7 @@ const Featured = () => {
                     <Slider {...settings}>
                       {
                         products.map((item , i)=>(
-                          <div onClick={()=>handleNav(item)} className='w-[380px]' >
+                          <div onClick={()=>handleNav(item)} className='w-[380px] cursor-pointer' >
                             <img className='h-[380px]' src={item.image} alt="Clothes" />
                             <div className='mt-2 pl-5'>
                               <h2 className='text-primary font-poppins text-xl'>{item.name}</h2>
