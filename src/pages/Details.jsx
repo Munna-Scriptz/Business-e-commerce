@@ -1,17 +1,22 @@
 import React from 'react'
 import proImg from '../../src/assets/images/Clothes1.jpg'
+import { useLocation } from 'react-router'
+
 const Details = () => {
+    const sendedData = useLocation()
+    const locationData = sendedData.state
+    console.log(sendedData.state)
     return (
         <>
             <section id='Details' className='mt-10'>
                 <div className="container">
                     <div id="Details-Row" className='flex items-start gap-[50px] justify-center'>
                         <div>
-                            <img className='w-[550px]' src={proImg} alt="Selected Product" />
+                            <img className='w-[550px]' src={locationData.image} alt="Selected Product" />
                             <div className='mt-4'>
-                                <h2 className='text-primary font-poppins text-xl'>Name: Warning t-shirt</h2>
-                                <p className='text-[#838383] font-poppins text-sm mt-2'>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p className='text-[#313131] font-poppins text-lg mt-2'>Price : $51</p>
+                                <h2 className='text-primary font-poppins text-xl'>Name: {locationData.name}</h2>
+                                <p className='text-[#838383] font-poppins text-sm mt-2'>Description: {locationData.description}</p>
+                                <p className='text-[#313131] font-poppins text-lg mt-2'>Price : ${locationData.price}</p>
                             </div>
                         </div>
 
