@@ -14,7 +14,7 @@ const Footer = () => {
                     <div className='mt-9 flex flex-col lg:items-start items-center'>
                         <p className=' text-white lg:text-start text-center '>🔥 Wear Ryans 🔥<br />🔥 Wear The class 🔥</p>
                         <p className='text-white font-poppins flex items-center gap-2 mt-5'><IoLocationSharp /> Dhaka , Bangladesh</p>
-                        <p className='text-white font-poppins flex items-center gap-2 mt-2'><IoCall /> Phone : 01xxxxxxxxx</p>
+                        <p className='text-white font-poppins flex items-center gap-2 mt-2'><IoCall /> Phone : 01908905391</p>
                         <p className='text-white font-poppins flex items-center gap-2 mt-2'><MdEmail /> Email : munnascriptz@gmail.com</p>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <h2 className='text-white font-poppins lg:text-second text-center text-2xl'>Support</h2>
+                    <h2 className='text-white font-poppins lg:text-start text-center text-2xl'>Support</h2>
                     <div className='mt-4 flex lg:items-start items-center flex-col gap-3'>
                         <Link to={'/about'} className='text-[#c9c9c9] font-poppins '>About us</Link>
                         <Link to={'/contact'} className='text-[#c9c9c9] font-poppins '>Contact</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
         </div>
         <div className='border-t border-t-[#4A4A4A] mt-10 pt-6'>
-            <p className='text-[#b4b4b4] font-poppins text-center'>© 2025 Munna-Scriptz, Inc.</p>
+            <p className='text-[#b4b4b4] font-poppins text-center'>© 2025 Made By <Link className='underline' to={'https://munna-scriptz.vercel.app/'}>Munna-Scriptz,</Link> Inc.</p>
         </div>
     </footer>
     </>

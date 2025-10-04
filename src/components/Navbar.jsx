@@ -18,7 +18,7 @@ const Navbar = () => {
                     {/* -----------NavLinks-------- */}
                     <ul className='text-white flex items-center gap-5 font-poppins'>
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/'}>Shop</Link></li>
+                        <li><Link to={'/shop'}>Shop</Link></li>
                         <li><Link to={'/'}>About</Link></li>
                         <li><Link to={'/'}>Contact us</Link></li>
                     </ul>
