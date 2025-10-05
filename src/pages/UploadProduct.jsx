@@ -39,7 +39,7 @@ const UploadProduct = () => {
     if(!form.details) return setFormErr((prev)=>({...prev , detailsErr: 'Please enter product Details' , detailsCol: '#fb2c36'}))
     if(!form.price) return setFormErr((prev)=>({...prev , priceErr: 'Please enter Price' , priceCol: '#fb2c36'}))
     if(!form.image) return setFormErr((prev)=>({...prev , imageErr: 'Please Upload Product Image' , imageCol: '#fb2c36'}))
-      console.log
+      
     const formData = new FormData();
     formData.append("image", form.image);
     const res = await fetch(
