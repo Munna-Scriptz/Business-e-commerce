@@ -1,15 +1,38 @@
 import React, { useState } from 'react';
+import { getDatabase, push, ref, set } from "firebase/database";
 
 const UploadProduct = () => {
+  const db = getDatabase();
+
   const [form, setForm] = useState({ name: "", details: "", price: "", image: null });
+  const [formErr, setFormErr] = useState({ nameErr: "", detailsErr: "", priceErr: "", imageErr: null });
 
   const handleChange = (e) => setForm({...form, [e.target.name]: e.target.value });
 
-  console.log(form.image)
+
+
+  // ------------- Firebase 
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    if(!form.name) return setForm((prev)=>({...prev , nameErr: 'Please enter product name'}))
+
+
+
+    set(push(ref(db, 'products/')), {
+      proName: form.name  ,
+      proDetails: form.details,
+      proPrice: form.price,
+      Image: form.image,
+    });
+
+    console.log('hello world')
+  }
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold mb-6 text-gray-900">Upload Product</h1>
-      <form className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         
         <div className="flex flex-col">
           <label className="mb-1 font-medium text-gray-700">Product Name</label>
@@ -56,7 +79,7 @@ const UploadProduct = () => {
         </div>
 
         <button 
-          type="submit" 
+          type="submit"
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all font-medium"
         >
           Submit Product

@@ -8,6 +8,7 @@ import AdminLayout from './layout/AdminLayout'
 import UploadProduct from './pages/UploadProduct'
 import ViewOrders from './pages/ViewOrders'
 import DeleteUpdateProduct from './pages/DeleteUpdateProduct'
+import app from './firebase.config'
 
 function App() {
 
