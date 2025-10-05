@@ -4,33 +4,74 @@ import { getDatabase, push, ref, set } from "firebase/database";
 const UploadProduct = () => {
   const db = getDatabase();
 
-  const [form, setForm] = useState({ name: "", details: "", price: "", image: '' });
+  const [form, setForm] = useState({ name: "", details: "", price: "", image: null });
   const [formErr, setFormErr] = useState({ nameErr: "Product Name", nameCol: '#364153', detailsErr: "Product Details", detailsCol: '#364153', priceErr: "Price", priceCol: '#364153', imageErr: 'Product Image' , imageCol: '#364153 ' });
 
-  const handleChange = (e) => {setForm({...form, [e.target.name]: e.target.value ,}) , setFormErr((prev)=>({...prev , nameErr: 'Product Name' , nameCol: '#364153', detailsErr: "Product Details", detailsCol: '#364153', priceErr: "Price", priceCol: '#364153', imageErr: 'Product Image' , imageCol: '#364153 '}))}
+  const handleChange = (e) => {
+  const { name, value, files } = e.target;
+
+  setForm({
+    ...form,
+    [name]: files ? files[0] : value, // ✅ store File object if image
+  });
+
+  setFormErr((prev) => ({
+    ...prev,
+    nameErr: "Product Name",
+    nameCol: "#364153",
+    detailsErr: "Product Details",
+    detailsCol: "#364153",
+    priceErr: "Price",
+    priceCol: "#364153",
+    imageErr: "Product Image",
+    imageCol: "#364153",
+  }));
+};
 
 
-  console.log(form.image)
+
   // ------------- Firebase 
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault()
 
     if(!form.name) return setFormErr((prev)=>({...prev , nameErr: 'Please enter product name' , nameCol: '#fb2c36'}))
     if(!form.details) return setFormErr((prev)=>({...prev , detailsErr: 'Please enter product Details' , detailsCol: '#fb2c36'}))
     if(!form.price) return setFormErr((prev)=>({...prev , priceErr: 'Please enter Price' , priceCol: '#fb2c36'}))
     if(!form.image) return setFormErr((prev)=>({...prev , imageErr: 'Please Upload Product Image' , imageCol: '#fb2c36'}))
+      console.log
+    const formData = new FormData();
+    formData.append("image", form.image);
+    const res = await fetch(
+      "https://api.imgbb.com/1/upload?key=ea14261f0c070a6cd6064f6bfcbfd456",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const data = await res.json();
+    if (data.success) {
+      const url = data.data.url;
+      set(push(ref(db, 'products/')), {
+        proName: form.name  ,
+        proDetails: form.details,
+        proPrice: form.price,
+        Image: url,
+      })
+    
+      .then(() => {
+        console.log('Data saved SuccessFully')
+        // Data saved successfully!
+      })
+      .catch((error) => {
+        console.log(error)
+      });
 
+    console.log("Image uploaded:", url);
+  } else {
+    console.error("Upload failed:", data);
+  }
 
-
-    set(push(ref(db, 'products/')), {
-      proName: form.name  ,
-      proDetails: form.details,
-      proPrice: form.price,
-      Image: form.image,
-    });
-
-    console.log('hello world')
   }
 
   return (
@@ -76,13 +117,13 @@ const UploadProduct = () => {
         <div className="flex flex-col">
           <label className={`mb-1 font-medium`} style={{color : formErr.imageCol}}>{formErr.imageErr}</label>
           <input 
-            type="file" 
-            name="image" 
-            className="border border-gray-300 p-2 rounded cursor-pointer focus:ring-2 focus:ring-blue-500"
-            value={form.image} 
-            onChange={handleChange} 
-            onClick={()=>setFormErr((prev)=>({...prev ,imageErr: 'Product Image' , imageCol: '#364153 '}))}
-          />
+          type="file" 
+          name="image" 
+          className="border border-gray-300 p-2 rounded cursor-pointer focus:ring-2 focus:ring-blue-500"
+          onChange={handleChange} 
+          onClick={() => setFormErr((prev)=>({...prev ,imageErr: 'Product Image' , imageCol: '#364153 '}))}
+        />
+
         </div>
 
         <button 
