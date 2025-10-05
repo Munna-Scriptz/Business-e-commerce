@@ -14,7 +14,7 @@ const AdminLayout = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-74 bg-gray-900 text-white p-6 flex flex-col h-screen shadow-lg">
+      <aside className="w-74 bg-gray-900 text-white p-6 sticky top-0 flex flex-col h-screen shadow-lg">
         <h2 className="text-3xl font-bold mb-8 text-center tracking-wide">Admin Panel</h2>
         <nav className="flex flex-col gap-3">
           {links.map((link, i) => (

@@ -54,11 +54,13 @@ const UploadProduct = () => {
     const data = await res.json();
     if (data.success) {
       const url = data.data.url;
+      const deleteUrl = data.data.delete_url;
       set(push(ref(db, 'products/')), {
         proName: form.name  ,
         proDetails: form.details,
         proPrice: form.price,
         image: url,
+        deleteUrl : deleteUrl
       })
     
       .then(() => {

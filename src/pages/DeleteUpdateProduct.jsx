@@ -25,7 +25,7 @@ const DeleteUpdateProduct = () => {
   } , [])
 
   // ---------------------- Delete Products 
-  const handleDelete = (e)=>{
+  const handleDelete = async (e)=>{
     remove(ref(db , 'products/' + e.key))
     toast.success('Product deleted!', {
       position: "top-right",
@@ -39,10 +39,11 @@ const DeleteUpdateProduct = () => {
       transition: Bounce,
     });
   }
+
   return (
     <div className="space-y-6 p-6 relative">
       {
-        loader? '' : <Loader />
+        loader? '' : <Loader mode={'absolute'} />
       }
       
       <h1 className="text-3xl font-bold text-gray-900 mb-4">Delete / Update Product</h1>
@@ -56,7 +57,7 @@ const DeleteUpdateProduct = () => {
         <div className="flex flex-col gap-4">
           {
             products.map((item , i)=>(
-              console.log(item),
+              console.log(item.product.deleteUrl),
               <div key={i} className="flex flex-col md:flex-row items-center justify-between bg-white p-5 rounded-lg shadow-md gap-4">
               
               {/* Product Info */}
