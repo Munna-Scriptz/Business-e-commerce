@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-
+import { getDatabase, push, ref, set } from "firebase/database";
 const Details = () => {
+    const db = getDatabase();
     const navigate = useNavigate()
     const sendedData = useLocation()
     const locationData = sendedData.state
@@ -21,6 +22,24 @@ const Details = () => {
         e.preventDefault()
         if(!formData.name || !formData.address || !formData.phone || !formData.email) return setFormData((prev)=>({...prev , formError: 'Please fill out all your information' , errorCol: '#f00a0a'}))
         navigate('/complete')
+
+        // --------------------- Writing data to db 
+        set(push(ref(db, 'orders/')), {
+            proName: locationData.proName,
+            proPrice: locationData.proPrice,
+            name: formData.name  ,
+            address: formData.address,
+            addressType: formData.type,
+            phone: formData.phone,
+            email: formData.email,
+        })
+            
+        .then(() => {
+            console.log('Data saved SuccessFully')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
         
     }
     return (
