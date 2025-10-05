@@ -15,7 +15,7 @@ const Banner = () => {
                 <div className='pt-15 lg:pt-25'>
                     <h1 className='text-[#eeeded] font-poppins font-medium text-[29px] lg:w-[660px] lg:text-[52px] Text-Yup'>Get your favorite <span className='text-[#83db50]'>Product</span> from our online store!</h1>
                     <div className='flex items-center justify-center mt-10 lg:justify-start'>
-                        <Link to={'/shop'} className='text-md font-poppins text-white bg-brand py-2 px-8 rounded-full font-medium'>Shop Now</Link>
+                        <Link to={'/shop'} className='text-md font-poppins text-white bg-brand py-2 px-8 rounded-full font-medium hover:bg-second duration-300'>Shop Now</Link>
                     </div>
                     <div className='flex items-center justify-between mt-10 gap-5'>
                         <span className='bg-[#eeeded] w-22 h-[2px] lg:w-[42%] inline-block'></span>

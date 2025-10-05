@@ -1,10 +1,28 @@
-import React from 'react'
-import { useLocation } from 'react-router'
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 
 const Details = () => {
+    const navigate = useNavigate()
     const sendedData = useLocation()
     const locationData = sendedData.state
-    console.log(sendedData.state)
+
+    // ------------------ Order Record 
+    const [formData , setFormData] = useState({
+        name: '',
+        address: '',
+        type: '',
+        phone: '',
+        email: '',
+        formError: 'To order this product please fill out your information',
+        errorCol: '#2d640c'
+    })
+
+    const handleForm = (e)=>{
+        e.preventDefault()
+        if(!formData.name || !formData.address || !formData.phone || !formData.email) return setFormData((prev)=>({...prev , formError: 'Please fill out all your information' , errorCol: '#f00a0a'}))
+        navigate('/complete')
+        
+    }
     return (
         <>
             <section id='Details' className='mt-10'>
@@ -13,17 +31,17 @@ const Details = () => {
                         <div>
                             <img className='w-[550px]' src={locationData.image} alt="Selected Product" />
                             <div className='mt-4'>
-                                <h2 className='text-primary font-poppins text-xl'>Name: {locationData.name}</h2>
-                                <p className='text-[#838383] font-poppins text-sm mt-2'>Description: {locationData.description}</p>
-                                <p className='text-[#313131] font-poppins text-lg mt-2'>Price : ${locationData.price}</p>
+                                <h2 className='text-primary font-poppins text-xl'>Name: {locationData.proName}</h2>
+                                <p className='text-[#838383] font-poppins text-sm mt-2'>Description: {locationData.proDetails}</p>
+                                <p className='text-[#313131] font-poppins text-lg mt-2'>Price : ${locationData.proPrice}</p>
                             </div>
                         </div>
 
                         {/* ---------------- Order  */}
                         <div className='w-[600px] mt-10 bg-[#e4e4e4] py-6 px-[24px] rounded-[12px]'>
-                            <h2 className='text-[#2d640c] font-poppins text-xl mb-10'>To order this product please fill out your information</h2>
+                            <h2 className='font-poppins font-medium text-xl mb-10' style={{color: formData.errorCol}}>{formData.formError}</h2>
 
-                            <form className="space-y-4">
+                            <form onSubmit={handleForm} className="space-y-4">
                                 {/* Name */}
                                 <div>
                                     <label htmlFor="name" className="block mb-1">Name</label>
@@ -32,6 +50,7 @@ const Details = () => {
                                         id="name"
                                         className="w-full border-1 border-gray-400 px-3 py-2 rounded"
                                         placeholder="Enter your name"
+                                        onChange={(e)=>setFormData((prev)=>({...prev , name: e.target.value ,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                     />
                                 </div>
 
@@ -44,6 +63,7 @@ const Details = () => {
                                             id="address"
                                             className="w-full border-1 border-gray-400 px-3 py-2 rounded"
                                             placeholder="Enter address"
+                                            onChange={(e)=>setFormData((prev)=>({...prev , address: e.target.value,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                         />
                                     </div>
                                     <div className="w-40">
@@ -51,6 +71,7 @@ const Details = () => {
                                         <select
                                             id="addressType"
                                             className="w-full border-1 border-gray-400 px-3 py-2 rounded"
+                                            onChange={(e)=>setFormData((prev)=>({...prev , type: e.target.value,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                         >
                                             <option value="home">Home</option>
                                             <option value="town">Town</option>
@@ -67,6 +88,7 @@ const Details = () => {
                                         id="phone"
                                         className="w-full border-1 border-gray-400 px-3 py-2 rounded"
                                         placeholder="Enter phone number"
+                                        onChange={(e)=>setFormData((prev)=>({...prev , phone: e.target.value,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                     />
                                 </div>
 
@@ -78,11 +100,12 @@ const Details = () => {
                                         id="email"
                                         className="w-full border-1 border-gray-400 px-3 py-2 rounded"
                                         placeholder="Enter email"
+                                        onChange={(e)=>setFormData((prev)=>({...prev , email: e.target.value,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                     />
                                 </div>
 
                                 {/* --------------Order Button  */}
-                                <button className='w-full bg-brand py-2.5 rounded-[8px] mt-6 cursor-pointer text-white font-medium hover:bg-second duration-300'>
+                                <button type='submit' className='w-full bg-brand py-2.5 rounded-[8px] mt-6 cursor-pointer text-white font-medium hover:bg-second duration-300'>
                                     Order Now
                                 </button>
                             </form>

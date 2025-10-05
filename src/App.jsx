@@ -9,6 +9,7 @@ import UploadProduct from './pages/UploadProduct'
 import ViewOrders from './pages/ViewOrders'
 import DeleteUpdateProduct from './pages/DeleteUpdateProduct'
 import app from './firebase.config'
+import Complete from './pages/Complete'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Home/>}></Route>
           <Route path='/shop' element={<Shop/>}></Route>
           <Route path='/details' element={<Details/>}></Route>
+          <Route path='/complete' element={<Complete/>}></Route>
         </Route>
 
         <Route path='/admin' element={<AdminLayout/>}>

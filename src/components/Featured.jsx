@@ -12,7 +12,7 @@ import Cloths3 from '../assets/images/clothes3.jpg'
 import Cloths4 from '../assets/images/clothes4.jpg'
 import Cloths5 from '../assets/images/clothes5.jpg'
 import Cloths6 from '../assets/images/clothes6.jpg'
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const Featured = () => {
   function NextArrow(props) {
@@ -133,7 +133,7 @@ const Featured = () => {
                 <div id="header">
                     <h2 className='text-3xl text-primary font-medium text-center font-poppins'>Featured Products</h2>
                 </div>
-                 <div className="slider-container mt-15">
+                <div className="slider-container mt-15">
                     <Slider {...settings}>
                       {
                         products.map((item , i)=>(
@@ -148,7 +148,10 @@ const Featured = () => {
                         ))
                       }
                     </Slider>
-                  </div>
+                </div>
+                <Link to={'/'} className='w-63 mx-auto block text-center mt-20 bg-brand py-2.5 rounded-[8px] cursor-pointer text-white font-medium hover:bg-second duration-300'>
+                  View All Products
+                </Link>
             </div>
         </section>
     </>
