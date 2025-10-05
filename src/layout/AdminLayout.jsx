@@ -38,7 +38,7 @@ const AdminLayout = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-6 bg-gray-100 min-h-screen rounded-l-3xl shadow-inner">
+      <main className="flex-1 bg-gray-100 min-h-screen rounded-l-3xl shadow-inner">
         <Outlet />
       </main>
     </div>

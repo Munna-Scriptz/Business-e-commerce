@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { getDatabase, push, ref, set } from "firebase/database";
+import Loader from '../components/common/Loader';
+import { Bounce, toast } from 'react-toastify';
 
 const UploadProduct = () => {
   const db = getDatabase();
-
+  const [loader , setLoader] = useState(true)
   const [form, setForm] = useState({ name: "", details: "", price: "", image: null });
   const [formErr, setFormErr] = useState({ nameErr: "Product Name", nameCol: '#364153', detailsErr: "Product Details", detailsCol: '#364153', priceErr: "Price", priceCol: '#364153', imageErr: 'Product Image' , imageCol: '#364153 ' });
 
@@ -39,7 +41,7 @@ const UploadProduct = () => {
     if(!form.details) return setFormErr((prev)=>({...prev , detailsErr: 'Please enter product Details' , detailsCol: '#fb2c36'}))
     if(!form.price) return setFormErr((prev)=>({...prev , priceErr: 'Please enter Price' , priceCol: '#fb2c36'}))
     if(!form.image) return setFormErr((prev)=>({...prev , imageErr: 'Please Upload Product Image' , imageCol: '#fb2c36'}))
-      
+    setLoader(false)
     const formData = new FormData();
     formData.append("image", form.image);
     const res = await fetch(
@@ -60,11 +62,34 @@ const UploadProduct = () => {
       })
     
       .then(() => {
-        console.log('Data saved SuccessFully')
-        // Data saved successfully!
+        setLoader(true)
+        toast.success('Product added successfully!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });
       })
       .catch((error) => {
         console.log(error)
+        setLoader(true)
+        console.log('Data saved SuccessFully')
+        toast.error('Something went wrong!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       });
 
     console.log("Image uploaded:", url);
@@ -75,8 +100,11 @@ const UploadProduct = () => {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 rounded-lg shadow-md h-full relative">
       <h1 className="text-3xl font-bold mb-6 text-gray-900">Upload Product</h1>
+      {
+        loader? '' : <Loader mode={'absolute'} />
+      }
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         
         <div className="flex flex-col">

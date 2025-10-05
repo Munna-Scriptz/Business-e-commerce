@@ -10,7 +10,7 @@ import ViewOrders from './pages/ViewOrders'
 import DeleteUpdateProduct from './pages/DeleteUpdateProduct'
 import app from './firebase.config'
 import Complete from './pages/Complete'
-
+import { ToastContainer } from 'react-toastify';
 function App() {
 
   const MyRoute = createBrowserRouter(createRoutesFromElements(
@@ -35,6 +35,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={MyRoute}></RouterProvider>
     </>
   )

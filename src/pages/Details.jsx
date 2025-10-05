@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { getDatabase, push, ref, set } from "firebase/database";
+import Loader from '../components/common/Loader';
+import { Bounce, toast } from 'react-toastify';
 const Details = () => {
     const db = getDatabase();
     const navigate = useNavigate()
     const sendedData = useLocation()
     const locationData = sendedData.state
-
+    const [loader , setLoader] = useState(true)
     // ------------------ Order Record 
     const [formData , setFormData] = useState({
         name: '',
@@ -21,8 +23,7 @@ const Details = () => {
     const handleForm = (e)=>{
         e.preventDefault()
         if(!formData.name || !formData.address || !formData.phone || !formData.email) return setFormData((prev)=>({...prev , formError: 'Please fill out all your information' , errorCol: '#f00a0a'}))
-        navigate('/complete')
-
+        setLoader(false)
         // --------------------- Writing data to db 
         set(push(ref(db, 'orders/')), {
             proName: locationData.proName,
@@ -35,16 +36,43 @@ const Details = () => {
         })
             
         .then(() => {
-            console.log('Data saved SuccessFully')
+            toast.success('Your order has been recorded!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         })
         .catch((error) => {
             console.log(error)
+            toast.error('Something went wrong!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         })
-        
+        setTimeout(() => {
+            setLoader(false)
+            navigate('/complete')
+        }, 3000);
     }
     return (
         <>
             <section id='Details' className='mt-10'>
+                {
+                    loader? '' : <Loader mode={'fixed'} />
+                }
                 <div className="container">
                     <div id="Details-Row" className='flex items-start gap-[50px] justify-center'>
                         <div>
