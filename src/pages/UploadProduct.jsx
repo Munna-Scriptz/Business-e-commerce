@@ -12,7 +12,7 @@ const UploadProduct = () => {
 
   setForm({
     ...form,
-    [name]: files ? files[0] : value, // ✅ store File object if image
+    [name]: files ? files[0] : value,
   });
 
   setFormErr((prev) => ({
@@ -56,7 +56,7 @@ const UploadProduct = () => {
         proName: form.name  ,
         proDetails: form.details,
         proPrice: form.price,
-        Image: url,
+        image: url,
       })
     
       .then(() => {
