@@ -11,6 +11,8 @@ import DeleteUpdateProduct from './pages/DeleteUpdateProduct'
 import app from './firebase.config'
 import Complete from './pages/Complete'
 import { ToastContainer } from 'react-toastify';
+import Contact from './pages/Contact'
+import Login from './pages/Login'
 function App() {
 
   const MyRoute = createBrowserRouter(createRoutesFromElements(
@@ -21,6 +23,8 @@ function App() {
           <Route path='/shop' element={<Shop/>}></Route>
           <Route path='/details' element={<Details/>}></Route>
           <Route path='/complete' element={<Complete/>}></Route>
+          <Route path='/contact' element={<Contact/>}></Route>
+          <Route path='/admin/login' element={<Login />}></Route> 
         </Route>
 
         <Route path='/admin' element={<AdminLayout/>}>

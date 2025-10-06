@@ -20,7 +20,7 @@ const Navbar = () => {
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/shop'}>Shop</Link></li>
                         <li><Link to={'/'}>About</Link></li>
-                        <li><Link to={'/'}>Contact us</Link></li>
+                        <li><Link to={'/contact'}>Contact us</Link></li>
                     </ul>
                     {/* -----------Buttons-------- */}
                     <div id='NavIcon' className='flex items-center gap-5 text-2xl text-white'>
