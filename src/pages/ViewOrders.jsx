@@ -42,8 +42,8 @@ const ViewOrders = () => {
   }
   
   return (
-    <div className="space-y-6 p-6 relative">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">View Orders</h1>
+    <div className="space-y-6 md:p-6 p-4 relative">
+      <h1 className="md:text-3xl text-2xl font-bold text-gray-900 mb-4">View Orders</h1>
       {
         loader? '' : <Loader mode={'absolute'} />
       }

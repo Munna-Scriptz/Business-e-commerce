@@ -46,7 +46,7 @@ const DeleteUpdateProduct = () => {
         loader? '' : <Loader mode={'absolute'} />
       }
       
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">Delete / Update Product</h1>
+      <h1 className="md:text-3xl text-2xl font-bold text-gray-900 mb-4">Delete / Update Product</h1>
       {
         products.length == 0?
         <div className='flex items-center justify-center h-[70vh] flex-col'>
@@ -57,8 +57,7 @@ const DeleteUpdateProduct = () => {
         <div className="flex flex-col gap-4">
           {
             products.map((item , i)=>(
-              console.log(item.product.deleteUrl),
-              <div key={i} className="flex flex-col md:flex-row items-center justify-between bg-white p-5 rounded-lg shadow-md gap-4">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white p-5 rounded-lg shadow-md gap-4">
               
               {/* Product Info */}
               <div className="flex items-center gap-4">

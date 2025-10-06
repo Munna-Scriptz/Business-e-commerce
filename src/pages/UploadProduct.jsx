@@ -54,13 +54,11 @@ const UploadProduct = () => {
     const data = await res.json();
     if (data.success) {
       const url = data.data.url;
-      const deleteUrl = data.data.delete_url;
       set(push(ref(db, 'products/')), {
         proName: form.name  ,
         proDetails: form.details,
         proPrice: form.price,
         image: url,
-        deleteUrl : deleteUrl
       })
     
       .then(() => {
@@ -102,8 +100,8 @@ const UploadProduct = () => {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md h-full relative">
-      <h1 className="text-3xl font-bold mb-6 text-gray-900">Upload Product</h1>
+    <div className="bg-white md:p-6 p-4 rounded-lg shadow-md h-full relative">
+      <h1 className="md:text-3xl text-2xl font-bold mb-6 text-gray-900">Upload Product</h1>
       {
         loader? '' : <Loader mode={'absolute'} />
       }
