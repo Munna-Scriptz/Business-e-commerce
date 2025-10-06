@@ -16,16 +16,15 @@ const AdminLayout = () => {
 
   // --------------------------- Handle login 
   const [username, setUsername] = useState("");
-const [pass, setPass] = useState("");
-const [correct, setCorrect] = useState(false);
+  const [pass, setPass] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [correct, setCorrect] = useState(false);
 
-const handleLogin = (e) => {
-  e.preventDefault();
-
-  if (username === "munna" && pass === "Munna@2025!") {
-    setCorrect(true);
-  }
-};
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if(!username || !pass || username !== 'munna' || pass !== 'Munna@2025!') return setErrorMsg('Wrong username or password!')
+    if(username === "munna" && pass === "Munna@2025!") return setCorrect(true)
+  };
 
   return (
     <>
@@ -96,7 +95,7 @@ const handleLogin = (e) => {
             )}
       </div>
       :
-      <Login username={(e)=>setUsername(e.target.value)} password={(e)=>setPass(e.target.value)} submit={handleLogin}/>
+      <Login username={(e)=>{setUsername(e.target.value), setErrorMsg('')}} password={(e)=>{setPass(e.target.value), setErrorMsg('')}} errorMsg={errorMsg} submit={handleLogin}/>
       }
     </>
   );

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Login = ({username , password , submit}) => {
+const Login = ({username , password , submit , errorMsg}) => {
   const [showPass, setShowPass] = useState(false);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-gray-900 text-white rounded-xl shadow-lg w-full max-w-sm p-6">
-        <h2 className="text-3xl font-bold text-center mb-6">Admin Login</h2>
-        <form onSubmit={submit} className="flex flex-col gap-4">
+        <h2 className="text-3xl font-bold text-center">Admin Login</h2>
+        <p className="text-sm font-bold text-red-500 text-center mt-3">{errorMsg}</p>
+        <form onSubmit={submit} className="flex flex-col gap-4 mt-6">
           <div>
             <label className="block mb-1 text-sm font-medium">Username</label>
             <input
