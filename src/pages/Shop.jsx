@@ -46,17 +46,17 @@ const Shop = () => {
           {
             product.length == 0?
             <div className='flex items-center justify-center h-[70vh] flex-col'>
-              <img className='w-[200px]' src={noProduct} alt="No orders yet..." />
-              <h2 className='text-second text-2xl'>No Products available right now...</h2>
+              <img className='md:w-[200px] w-[150px]' src={noProduct} alt="No orders yet..." />
+              <h2 className='text-second md:text-2xl text-lg'>No Products available right now...</h2>
             </div>
             :
             <div className='flex items-center gap-[53px] flex-wrap'>
               {
                 product.map((item , i)=>(
                   console.log(item),
-                  <div key={i} onClick={()=>handleNav(item)} className='w-[380px] mx-auto cursor-pointer' >
-                    <img className='h-[380px]' src={item.image} alt="Clothes" />
-                    <div className='mt-2 pl-5'>
+                  <div key={i} onClick={()=>handleNav(item)} className='md:w-[380px] w-full mx-auto cursor-pointer' >
+                    <img className='md:h-[380px] h-[330px] w-full' src={item.image} alt="Clothes" />
+                    <div className='mt-2'>
                       <h2 className='text-primary font-poppins text-xl'>{item.proName}</h2>
                       <p className='text-[#838383] font-poppins text-sm mt-1'>{item.proDetails}</p>
                       <p className='text-[#313131] font-poppins text-lg mt-1'>${item.proPrice}</p>

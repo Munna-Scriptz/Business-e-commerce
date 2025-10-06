@@ -74,7 +74,7 @@ const Details = () => {
                     loader? '' : <Loader mode={'fixed'} />
                 }
                 <div className="container">
-                    <div id="Details-Row" className='flex items-start gap-[50px] justify-center'>
+                    <div id="Details-Row" className='flex lg:flex-row flex-col items-start gap-[50px] justify-center'>
                         <div>
                             <img className='w-[550px]' src={locationData.image} alt="Selected Product" />
                             <div className='mt-4'>
@@ -85,8 +85,8 @@ const Details = () => {
                         </div>
 
                         {/* ---------------- Order  */}
-                        <div className='w-[600px] mt-10 bg-[#e4e4e4] py-6 px-[24px] rounded-[12px]'>
-                            <h2 className='font-poppins font-medium text-xl mb-10' style={{color: formData.errorCol}}>{formData.formError}</h2>
+                        <div className='lg:w-[600px] w-full mt-10 bg-[#e4e4e4] py-6 px-[24px] rounded-[12px]'>
+                            <h2 className='font-poppins font-medium lg:text-xl text-lg lg:text-start text-center mb-10' style={{color: formData.errorCol}}>{formData.formError}</h2>
 
                             <form onSubmit={handleForm} className="space-y-4">
                                 {/* Name */}
@@ -102,7 +102,7 @@ const Details = () => {
                                 </div>
 
                                 {/* Address + Type */}
-                                <div className="flex gap-2">
+                                <div className="flex lg:flex-row flex-col gap-2">
                                     <div className="flex-1">
                                         <label htmlFor="address" className="block mb-1">Address</label>
                                         <input
@@ -113,7 +113,7 @@ const Details = () => {
                                             onChange={(e)=>setFormData((prev)=>({...prev , address: e.target.value,formError: 'To order this product please fill out your information', errorCol: '#2d640c'}))}
                                         />
                                     </div>
-                                    <div className="w-40">
+                                    <div className="lg:w-40 w-full">
                                         <label htmlFor="addressType" className="block mb-1">Type</label>
                                         <select
                                             id="addressType"

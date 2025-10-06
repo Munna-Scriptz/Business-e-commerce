@@ -28,12 +28,11 @@ const ResNavbar = () => {
                             {/* -----------Buttons-------- */}
                             <div id='NavIcon' className='flex items-center gap-2 text-xl text-white'>
                                 <BiSolidPhoneCall  className='cursor-pointer hover:text-brand duration-[300ms]'/>
-                                <FaShoppingCart className='cursor-pointer hover:text-brand duration-[300ms]'/>
                             </div>
                         </div>
                     </div>
                             {/* -----------Menu Bar-------- */}
-                            <section className={`absolute w-full top-0 left-0 h-full duration-[.8s] ${Value? ' translate-x-[-520px] md:translate-x-[-740px] ' : ' translate-x-[0px]'}`}>
+                            <section className={`absolute w-full top-0 left-0 h-full duration-[.8s] z-10 ${Value? ' translate-x-[-520px] md:translate-x-[-740px] ' : ' translate-x-[0px]'}`}>
                             <div onClick={()=>SetValue(!Value)} className='absolute w-full h-full bg-[#00000059] blur-[10px]'></div>
                             <div className={`h-screen w-[60%] absolute top-0 bg-primary p-5 flex duration-[.8s] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden z-50`}>
                               <div className='flex items-center justify-between absolute top-0 right-0 w-full p-5'>
@@ -46,10 +45,10 @@ const ResNavbar = () => {
                               </div>
         
                               <ul id='ResNav' className='flex flex-col gap-5 mt-25 text-white font-poppins'>
-                                <li><Link to={'/'}>Home</Link></li>
-                                <li><Link to={'/'}>Shop</Link></li>
-                                <li><Link to={'/'}>About</Link></li>
-                                <li><Link to={'/'}>Contact us</Link></li>
+                                <li><Link onClick={()=>SetValue(!Value)} to={'/'}>Home</Link></li>
+                                <li><Link onClick={()=>SetValue(!Value)} to={'/shop'}>Shop</Link></li>
+                                <li><Link onClick={()=>SetValue(!Value)} to={'/about'}>About</Link></li>
+                                <li><Link onClick={()=>SetValue(!Value)} to={'/contact'}>Contact us</Link></li>
                               </ul>
                             </div>
                             </section>
